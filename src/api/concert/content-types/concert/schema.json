@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "concerts",
+  "info": {
+    "singularName": "concert",
+    "pluralName": "concerts",
+    "displayName": "Concert",
+    "description": "Conciertos y eventos"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "cover": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "maxLength": 5000
+    },
+    "dateConcert": {
+      "type": "datetime",
+      "required": true
+    },
+    "location": {
+      "type": "string"
+    },
+    "linkToTicket": {
+      "type": "string"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["draft", "published", "cancelled", "sold_out", "postponed"],
+      "default": "draft"
+    },
+    "artists": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::author.author",
+      "description": "Artistas que participan en el concierto"
+    }
+  }
+}
